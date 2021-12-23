@@ -72,6 +72,11 @@ module.exports = {
     },
 
     handleAction: async function(responses){
+      try{
+
         return responses
+      } catch (error) {
+        console.error(error);
+      }
     }
 } 
