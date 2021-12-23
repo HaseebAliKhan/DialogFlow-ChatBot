@@ -1,6 +1,6 @@
 'use strict'
 const dialogflow = require('dialogflow');
-const config = require('../config/keys');
+const config = require('../config/dev' || '../config/prod');
 const structjson = require('structjson')
 
 const projectID = config.googleProjectID;
@@ -18,7 +18,6 @@ const sessionPath = sessionClient.sessionPath(config.googleProjectID, config.dia
 
 module.exports = {
     textQuery: async function(text, parameters = {}){
-      try {
         let self = module.exports;
         const request = {
             session: sessionPath,
@@ -39,14 +38,12 @@ module.exports = {
             let responses = await sessionClient.detectIntent(request);
           responses = await self.handleAction(responses);
           return responses;  
-          } catch (error) {
-            console.error(error);
-          }
+         
           // Send request and log result
           
     },
     eventQuery: async function(event, parameters = {}){
-      try {
+     
         let self = module.exports;
         const request = {
             session: sessionPath,
@@ -65,18 +62,13 @@ module.exports = {
             let responses = await sessionClient.detectIntent(request);
           responses = await self.handleAction(responses);
           return responses;  
-          } catch (error) {
-            console.error(error);
-          }
-          
+         
     },
 
     handleAction: async function(responses){
-      try{
+   
 
         return responses
-      } catch (error) {
-            console.error(error);
-          }
+     
     }
 } 
