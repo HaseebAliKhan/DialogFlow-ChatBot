@@ -1,6 +1,6 @@
 'use strict'
 const dialogflow = require('dialogflow');
-const config = require('../config/dev');
+const config = require('../config/keys');
 const structjson = require('structjson')
 
 const projectID = config.googleProjectID;
